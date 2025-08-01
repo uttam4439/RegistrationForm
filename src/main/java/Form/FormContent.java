@@ -1,8 +1,15 @@
 package Form;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+
+@Entity
 public class FormContent {
 
     private String fullName;
+    @Id
     private String email;
     private String phone;
     private String gender;
@@ -15,7 +22,11 @@ public class FormContent {
     private String examCenter;
     private String category;
     private String password;
-    private byte[] photo;       // store the image in memory as bytes
+    @Lob
+    @Column(name = "Photo")
+    private byte[] photo;
+    @Lob
+    @Column(name = "Signature")// store the image in memory as bytes
     private byte[] signature;
 
     public byte[] getPhoto() {
@@ -42,7 +53,7 @@ public class FormContent {
     public FormContent(String fullName, String email, String phone, String gender,
                        String dob, String address, String city, String state,
                        String pinCode, String qualification, String examCenter,
-                       String category, String password) {
+                       String category, String password , byte[] photo , byte[] signature) {
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
@@ -56,6 +67,9 @@ public class FormContent {
         this.examCenter = examCenter;
         this.category = category;
         this.password = password;
+        this.photo = photo;
+        this.signature = signature;
+
     }
 
     public String getFullName() {
