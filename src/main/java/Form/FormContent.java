@@ -1,9 +1,6 @@
 package Form;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.*;
 
 @Entity
 public class FormContent {
@@ -23,11 +20,13 @@ public class FormContent {
     private String category;
     private String password;
     @Lob
-    @Column(name = "Photo")
+    @Column(name = "photo")
     private byte[] photo;
+
     @Lob
-    @Column(name = "Signature")// store the image in memory as bytes
+    @Column(name = "signature")  // Store the image as bytes
     private byte[] signature;
+
 
     public byte[] getPhoto() {
         return photo;
